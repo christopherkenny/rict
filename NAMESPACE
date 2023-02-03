@@ -3,6 +3,7 @@
 S3method(rict,redist_map)
 S3method(rict,redist_plans)
 export("%>%")
+export(data_color_party)
 export(gt_add_column)
 export(gt_get_data)
 export(gt_hide_lists)
