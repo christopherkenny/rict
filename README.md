@@ -13,6 +13,7 @@ The goal of `rict` is to …
 - [ ] border table
 - [ ] “plan component” tables for county/muni/places/mcd (arbitrary
   units?)
+- [ ] “population” report
 
 ## Installation
 
