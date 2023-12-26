@@ -50,7 +50,7 @@ plot_compactness <- function(shp, plan,
       redist::filter(.data$rict_plan == .dist) %>%
       ggplot2::ggplot() +
       ggplot2::geom_sf(data = dplyr::filter(comp_shp, .data$rict_plan == .dist),
-                       fill = fill_color[2]) +
+                       fill = fill_color[2], linewidth = 1) +
       ggplot2::geom_sf(fill = fill_color[1]) +
       theme_map()
   })
