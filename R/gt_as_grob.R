@@ -6,7 +6,7 @@
 # #' @export
 # #'
 # #' @examples
-# #' rict(wv) %>% gt_as_grob()
+# #' rict(wv) |> gt_as_grob()
 # gt_as_grob <- function(tab) {
 #   tf <- tempfile(fileext = '.png')
 #   gt::gtsave(data = tab, filename = tf)

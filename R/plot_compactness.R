@@ -25,12 +25,12 @@ plot_compactness <- function(shp, plan,
     }
   }
 
-  shp <- shp %>%
-    dplyr::as_tibble() %>%
-    dplyr::select(.data$geometry) %>%
-    dplyr::mutate(rict_plan = plan) %>%
-    dplyr::group_by(.data$rict_plan) %>%
-    dplyr::summarise(geometry = sf::st_union(.data$geometry)) %>%
+  shp <- shp |>
+    dplyr::as_tibble() |>
+    dplyr::select(.data$geometry) |>
+    dplyr::mutate(rict_plan = plan) |>
+    dplyr::group_by(.data$rict_plan) |>
+    dplyr::summarise(geometry = sf::st_union(.data$geometry)) |>
     sf::st_as_sf()
 
   fn <- switch(measure,
@@ -42,12 +42,12 @@ plot_compactness <- function(shp, plan,
                'Skew' = circles_skew,
                'Box Reock' = \(x) sf::st_as_sf(geos::geos_minimum_rotated_rectangle(x))
   )
-  comp_shp <- fn(shp) %>%
+  comp_shp <- fn(shp) |>
     dplyr::mutate(rict_plan = shp$rict_plan)
 
   lapply(sort(shp$rict_plan), function(.dist) {
-    shp %>%
-      redist::filter(.data$rict_plan == .dist) %>%
+    shp |>
+      redist::filter(.data$rict_plan == .dist) |>
       ggplot2::ggplot() +
       ggplot2::geom_sf(data = dplyr::filter(comp_shp, .data$rict_plan == .dist),
                        fill = fill_color[2], linewidth = 1) +
@@ -76,6 +76,6 @@ circles_skew <- function(shp) {
   do.call('rbind', args = l)
 }
 
-# x <- wv %>% dplyr::group_by(cd_2020) %>% dplyr::summarise()
+# x <- wv |> dplyr::group_by(cd_2020) |> dplyr::summarise()
 # z <- lapply(, \(y) plot_compactness(y, shp = wv, plan = wv$cd_2020))
 # patchwork::wrap_plots(z, ncol = 1)

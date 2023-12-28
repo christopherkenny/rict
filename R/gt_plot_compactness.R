@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' rict(wv_plans, 'cd_2020') %>%
+#' rict(wv_plans, 'cd_2020') |>
 #'   gt_plot_compactness(wv, wv$cd_2020)
 gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
                                 height = 200, ...) {
@@ -33,8 +33,8 @@ gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
   lapply(seq_along(cps), function(i) {
     cp <- cps[[i]]
     nom <- noms[i]
-    tab <<- tab %>% # TODO bad assignment, but good for mwe
-      gt_add_column(.col = !!nom, .val = NA) %>%
+    tab <<- tab |> # TODO bad assignment, but good for mwe
+      gt_add_column(.col = !!nom, .val = NA) |>
       gt::text_transform(locations = gt::cells_body(columns = !!rlang::enquo(nom)),
                          fn = function(x) {
                            lapply(cp, gt::ggplot_image, height = gt::px(height))
@@ -69,7 +69,7 @@ guess_comp <- function(x) {
     `Box Reock` = grep(pattern = 'box_reock', x = noms)
   )
 
-  Filter(function(x) length(x) != 0, maybe) %>% names()
+  Filter(function(x) length(x) != 0, maybe) |> names()
 }
 
 gg_comp_names <- function(measures) {

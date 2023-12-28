@@ -9,14 +9,14 @@
 #' @export
 #'
 #' @examples
-#'rict(wv) %>% gt_add_column(r, 3)
+#'rict(wv) |> gt_add_column(r, 3)
 gt_add_column <- function(tab, .col, .val, ...) {
   .col <- rlang::ensym(.col)
   .val <- rlang::enquo(.val)
 
-  tab[['_data']] <- tab[['_data']] %>%
+  tab[['_data']] <- tab[['_data']] |>
     dplyr::mutate({{ .col }} := !!.val)
-  tab[['_boxhead']] <- tab[['_boxhead']] %>%
+  tab[['_boxhead']] <- tab[['_boxhead']] |>
     dplyr::add_row(var = rlang::as_name(.col), type = 'default',
                    column_label = list(rlang::as_name(.col)),
                    column_align = 'center',
@@ -32,7 +32,7 @@ gt_add_column <- function(tab, .col, .val, ...) {
 #' @export
 #'
 #' @examples
-#'rict(wv) %>% gt_get_data()
+#'rict(wv) |> gt_get_data()
 gt_get_data <- function(tab) {
   tab[['_data']]
 }
@@ -45,7 +45,7 @@ gt_get_data <- function(tab) {
 #' @export
 #'
 #' @examples
-#' wv %>% gt::gt() %>% gt_hide_lists()
+#' wv |> gt::gt() |> gt_hide_lists()
 gt_hide_lists <- function(tab) {
   to_hide <- vapply(gt_get_data(tab), is.list, FUN.VALUE = NA)
   gt::cols_hide(tab, names(Filter(function(x) x, to_hide)))

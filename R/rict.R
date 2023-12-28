@@ -17,19 +17,19 @@ rict <- function(x, plan, ...) {
 #' @method rict redist_plans
 #' @export
 rict.redist_plans <- function(x, plan, ...) {
-  x %>%
-    redist::filter(.data$draw == plan) %>%
-    dplyr::select(-.data$draw) %>%
+  x |>
+    redist::filter(.data$draw == plan) |>
+    dplyr::select(-.data$draw) |>
     gt::gt()
 }
 
 #' @method rict redist_map
 #' @export
 rict.redist_map <- function(x, plan = redist::get_existing(x), ...) {
-  x %>%
-    dplyr::mutate(district = dplyr::all_of(.env$plan)) %>%
-    redist::merge_by(.data$district, by_existing = FALSE, collapse_chr = FALSE) %>%
-    dplyr::as_tibble() %>%
-    dplyr::select(-.data$adj) %>%# dplyr::glimpse()
+  x |>
+    dplyr::mutate(district = dplyr::all_of(.env$plan)) |>
+    redist::merge_by(.data$district, by_existing = FALSE, collapse_chr = FALSE) |>
+    dplyr::as_tibble() |>
+    dplyr::select(-.data$adj) |># dplyr::glimpse()
     gt::gt()
 }

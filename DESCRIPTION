@@ -18,11 +18,10 @@ Imports:
     redist,
     cli,
     dplyr,
-    magrittr,
     geos,
     rlang,
     grid,
     png
 Depends: 
-    R (>= 2.10)
+    R (>= 4.1.0)
 LazyData: true

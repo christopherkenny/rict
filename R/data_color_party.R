@@ -8,10 +8,10 @@
 #' @export
 #'
 #' @examples
-#' rict(wv_plans, 'cd_2020') %>%
+#' rict(wv_plans, 'cd_2020') |>
 #'   data_color_party(columns = 'e_dvs')
 data_color_party <- function(tab, columns = gt::everything(), ...) {
-  tab %>%
+  tab |>
     gt::data_color(
       columns = columns,
       palette = partisan,
