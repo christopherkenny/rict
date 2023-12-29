@@ -18,6 +18,7 @@ RoxygenNote: 7.2.3
 Imports: 
     cli,
     dplyr,
+    geomander,
     geos,
     ggplot2,
     grid,
@@ -25,7 +26,8 @@ Imports:
     png,
     redist,
     rlang,
-    sf
+    sf,
+    stringr
 Depends: 
     R (>= 4.1.0)
 LazyData: true

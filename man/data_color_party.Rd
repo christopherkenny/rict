@@ -20,6 +20,6 @@ A \link[gt:gt]{gt::gt}
 Color Columns with Partisan Scales
 }
 \examples{
-rict(wv_plans, 'cd_2020') \%>\%
+rict(wv_plans, 'cd_2020') |>
   data_color_party(columns = 'e_dvs')
 }

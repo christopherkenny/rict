@@ -1,16 +1,15 @@
-#' Title
+#' Display population parity in a table
 #'
-#' @param map
-#' @param plan
-#' @param as_gt
+#' @param map `r template_var_map()`
+#' @param plan `r template_var_plan()`
+#' @param as_gt `r template_var_as_gt()`
 #'
-#' @return
+#' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
 #' @export
 #'
 #' @examples
+#' rict_population(map = wv, plan = wv$cd_2020)
 rict_population <- function(map, plan, as_gt = TRUE) {
-
-
 
   map$District <- plan
   tgt_pop <- round(sum(map$pop) / length(unique(plan)))

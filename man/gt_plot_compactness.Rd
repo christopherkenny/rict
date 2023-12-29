@@ -33,6 +33,6 @@ A \link[gt:gt]{gt::gt}
 Add Compactness Metric Plots to a \code{gt}
 }
 \examples{
-rict(wv_plans, 'cd_2020') \%>\%
+rict(wv_plans, 'cd_2020') |>
   gt_plot_compactness(wv, wv$cd_2020)
 }

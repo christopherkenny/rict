@@ -1,3 +1,14 @@
+#' Display electoral data in a table
+#'
+#' @param map `r template_var_map()`
+#' @param plan `r template_var_plan()`
+#' @param as_gt `r template_var_as_gt()`
+#'
+#' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
+#' @export
+#'
+#' @examples
+#' rict_elections(map = wv, plan = wv$cd_2020)
 rict_elections <- function(map, plan, as_gt = TRUE) {
 
   elecs <- map |>
@@ -138,9 +149,9 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
         columns = dplyr::any_of(c('e_dvs', 'avg_cycle', 'ndshare'))
       ) |>
       gt::cols_label(
-        e_dvs = 'Contest',
-        avg_cycle = 'Cycle',
-        ndshare = 'Pre-Average'
+        dplyr::any_of('e_dvs') ~ 'Contest',
+        dplyr::any_of('avg_cycle') ~ 'Cycle',
+        ndshare ~ 'Pre-Average'
       ) |>
       gt::cols_label_with(
         columns = dplyr::starts_with('avg_'),
@@ -155,9 +166,9 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
           )
         }
       ) |>
-      data_color_party(-1) |>
+      data_color_party(!'District') |>
       gt::fmt_percent(
-        columns = -1,
+        columns = !'District',
         decimals = 1
       )
   } else {

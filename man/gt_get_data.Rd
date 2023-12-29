@@ -16,5 +16,5 @@ A \link[dplyr:reexports]{dplyr::tibble}
 Extract data from a \code{gt}
 }
 \examples{
-rict(wv) \%>\% gt_get_data()
+rict(wv) |> gt_get_data()
 }

@@ -21,7 +21,7 @@ You can install the development version of `rict` from
 [GitHub](https://github.com/) with:
 
 ``` r
-remotes::install_github("christopherkenny/rict")
+pak::pkg_install('christopherkenny/rict')
 ```
 
 ## Example

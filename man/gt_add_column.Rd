@@ -22,5 +22,5 @@ A \link[gt:gt]{gt::gt}
 Add a column to a \code{gt}
 }
 \examples{
-rict(wv) \%>\% gt_add_column(r, 3)
+rict(wv) |> gt_add_column(r, 3)
 }

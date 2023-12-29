@@ -13,7 +13,7 @@
 data_color_party <- function(tab, columns = gt::everything(), ...) {
   tab |>
     gt::data_color(
-      columns = columns,
+      columns = !!rlang::enquo(columns),
       palette = partisan,
       domain = c(0, 1),
       ...

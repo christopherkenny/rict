@@ -1,5 +1,20 @@
-rict_splits <- function(map, plan, admin = NULL, subadmin = NULL, total = NULL,
-                        multi = NULL, as_gt = TRUE) {
+#' Display splits data in a table
+#'
+#' @param map `r template_var_map()`
+#' @param plan `r template_var_plan()`
+#' @param admin column names in `map` without `NA` values to calculate administrative splits for
+#' @param subadmin column names in `map` with `NA` values to calculate administrative splits for
+#' @param total column names in `map` without `NA` values to calculate total splits for
+#' @param multi column names in `map` without `NA` values to calculate multi-splits for
+#' @param as_gt `r template_var_as_gt()`
+#'
+#' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
+#' @export
+#'
+#' @examples
+#' rict_splits(map = wv, plan = wv$cd_2020, admin = 'state')
+rict_splits <- function(map, plan, admin = NULL, subadmin = NULL, total = admin,
+                        multi = admin, as_gt = TRUE) {
 
   admin_out <- lapply(seq_along(admin), function(i) {
     redistmetrics::splits_admin(plan, map, !!rlang::sym(admin[i]))
