@@ -16,7 +16,6 @@ rict_contiguity <- function(map, plan, adj_col = 'adj', as_gt = TRUE) {
     map[[adj_col]] <- geomander::adjacency(map)
   }
 
-  map$District <- plan
   df <- geomander::check_contiguity(adj = map$adj, group = plan) |>
     dplyr::group_by(District = .data$group) |>
     dplyr::summarise(Pieces = max(.data$component)) |>
