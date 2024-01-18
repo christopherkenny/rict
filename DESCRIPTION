@@ -24,10 +24,13 @@ Imports:
     grid,
     gt,
     png,
+    purrr,
     redist,
+    redistmetrics,
     rlang,
     sf,
-    stringr
+    stringr,
+    tibble
 Depends: 
     R (>= 4.1.0)
 LazyData: true

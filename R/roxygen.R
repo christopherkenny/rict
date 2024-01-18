@@ -9,3 +9,7 @@ template_var_plan <- function() { # nocov start
 template_var_as_gt <- function() { # nocov start
   'Logical. Should output be a `gt` table? Default: `TRUE`.'
 } # nocov end
+
+template_var_adj_col <- function() { # nocov start
+  'Name of column in `map` that contains adjacency information.'
+} # nocov end

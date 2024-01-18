@@ -2,7 +2,7 @@
 #'
 #' @param map `r template_var_map()`
 #' @param plan `r template_var_plan()`
-#' @param adj_col Name of column in `map` that contains adjacency information.
+#' @param adj_col `r template_var_adj_col()`
 #' @param as_gt `r template_var_as_gt()`
 #'
 #' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
