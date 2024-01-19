@@ -17,12 +17,14 @@ rict_component <- function(map, plan, admin, as_gt = TRUE) {
     dplyr::group_by(dplyr::across(dplyr::all_of(c(admin, 'District')))) |>
     dplyr::summarise(
       pop = sum(.data$pop),
-      .groups = 'keep'
-    )
+      .groups = 'drop'
+    ) |>
+    dplyr::group_by(dplyr::across(dplyr::all_of(c(admin))))
 
   if (as_gt) {
     out |>
-      gt::gt()
+      gt::gt() |>
+      gt::fmt_number(columns = dplyr::all_of(c('pop')), decimals = 0)
   } else {
     out
   }
