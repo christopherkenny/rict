@@ -16,7 +16,8 @@ rict_component <- function(map, plan, admin, as_gt = TRUE) {
     dplyr::as_tibble() |>
     dplyr::group_by(dplyr::across(dplyr::all_of(c(admin, 'District')))) |>
     dplyr::summarise(
-      pop = sum(.data$pop)
+      pop = sum(.data$pop),
+      .groups = 'keep'
     )
 
   if (as_gt) {
