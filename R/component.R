@@ -19,11 +19,12 @@ rict_component <- function(map, plan, admin, as_gt = TRUE) {
       pop = sum(.data$pop),
       .groups = 'drop'
     ) |>
-    dplyr::group_by(dplyr::across(dplyr::all_of(c(admin))))
+    dplyr::group_by(dplyr::across(dplyr::all_of(c('District'))))
 
   if (as_gt) {
     out |>
       gt::gt() |>
+      gt::row_group_order(groups = as.character(sort(unique(out$District)))) |>
       gt::fmt_number(columns = dplyr::all_of(c('pop')), decimals = 0)
   } else {
     out
