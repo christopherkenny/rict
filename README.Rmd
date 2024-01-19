@@ -23,8 +23,8 @@ The goal of `rict` is to ...
 # TODOS
 
 - [ ] border table
-- [ ] "plan component" tables for county/muni/places/mcd (arbitrary units?)
-- [ ] "population" report
+- [x] "plan component" tables for county/muni/places/mcd (arbitrary units?)
+- [x] "population" report
 
 ## Installation
 

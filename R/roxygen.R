@@ -13,3 +13,7 @@ template_var_as_gt <- function() { # nocov start
 template_var_adj_col <- function() { # nocov start
   'Name of column in `map` that contains adjacency information.'
 } # nocov end
+
+template_var_seam <- function() { # nocov start
+  'Pair of districts in `plan` to focus on.'
+} # nocov end
