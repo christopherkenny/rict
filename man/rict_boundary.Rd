@@ -4,16 +4,14 @@
 \alias{rict_boundary}
 \title{Display boundary information in a table}
 \usage{
-rict_boundary(map, plan, admin, seam, adj_col = "adj", as_gt = TRUE)
+rict_boundary(map, plan, seam, adj_col = "adj", as_gt = TRUE)
 }
 \arguments{
 \item{map}{A \code{redist_map} or \code{sf} object.}
 
 \item{plan}{Column in \code{map} or vector of district assignments.}
 
-\item{admin}{quoted name of administrative unit column}
-
-\item{seam}{administrative units to filter by}
+\item{seam}{Pair of districts in \code{plan} to focus on.}
 
 \item{adj_col}{Name of column in \code{map} that contains adjacency information.}
 
@@ -26,5 +24,5 @@ a \code{gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble:
 Display boundary information in a table
 }
 \examples{
-rict_boundary(map = wv, plan = wv$cd_2020, admin = 'cd_2020', seam = c(1, 2))
+rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2))
 }
