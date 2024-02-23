@@ -4,7 +4,7 @@
 \alias{rict_boundary}
 \title{Display boundary information in a table}
 \usage{
-rict_boundary(map, plan, seam, adj_col = "adj", as_gt = TRUE)
+rict_boundary(map, plan, seam, columns, adj_col = "adj", as_gt = TRUE)
 }
 \arguments{
 \item{map}{A \code{redist_map} or \code{sf} object.}
@@ -24,5 +24,5 @@ a \code{gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble:
 Display boundary information in a table
 }
 \examples{
-rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2))
+rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2), columns = pop)
 }
