@@ -22,5 +22,5 @@ a \code{gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble:
 Display population data by administrative unit in a table
 }
 \examples{
-rict_component(map = wv, plan = wv$cd_2020, admin = 'state')
+rict_component(map = wv, plan = wv$cd_2020, admin = 'county')
 }

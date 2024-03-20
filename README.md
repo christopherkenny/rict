@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rict
+# rict <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -11,9 +11,9 @@ The goal of `rict` is to …
 # TODOS
 
 - [ ] border table
-- [ ] “plan component” tables for county/muni/places/mcd (arbitrary
+- [x] “plan component” tables for county/muni/places/mcd (arbitrary
   units?)
-- [ ] “population” report
+- [x] “population” report
 
 ## Installation
 
