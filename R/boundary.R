@@ -10,8 +10,8 @@
 #' @export
 #'
 #' @examples
-#' rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2))
-rict_boundary <- function(map, plan, seam, adj_col = 'adj', as_gt = TRUE) {
+#' rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2), columns = pop)
+rict_boundary <- function(map, plan, seam, columns, adj_col = 'adj', as_gt = TRUE) {
 
   if (missing(seam)) {
     cli::cli_abort('{.arg seam} is required.')
