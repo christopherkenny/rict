@@ -23,6 +23,7 @@ Imports:
     ggplot2,
     grid,
     gt,
+    palette,
     png,
     purrr,
     redist,
