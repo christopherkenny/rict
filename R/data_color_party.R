@@ -14,7 +14,7 @@ data_color_party <- function(tab, columns = gt::everything(), ...) {
   tab |>
     gt::data_color(
       columns = !!rlang::enquo(columns),
-      palette = partisan,
+      palette = as.character(partisan),
       domain = c(0, 1),
       ...
     )
