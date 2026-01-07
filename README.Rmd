@@ -18,13 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `rict` is to ...
-
-# TODOS
-
-- [ ] border table
-- [x] "plan component" tables for county/muni/places/mcd (arbitrary units?)
-- [x] "population" report
+The goal of `rict` is to provide clean, election tables to accompany maps.
 
 ## Installation
 
@@ -36,10 +30,10 @@ pak::pak('christopherkenny/rict')
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+If you have a `redist_map`, you can call `rict()` to produce a district-level summary table.
 
 ```{r example}
 library(rict)
-## basic example code
+rict(wv)
 ```
 
