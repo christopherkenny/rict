@@ -3,6 +3,7 @@
 #' @param map `r template_var_map()`
 #' @param plan `r template_var_plan()`
 #' @param seam `r template_var_seam()`
+#' @param columns columns in `map` to display in the output
 #' @param adj_col `r template_var_adj_col()`
 #' @param as_gt `r template_var_as_gt()`
 #'

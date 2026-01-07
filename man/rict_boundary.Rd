@@ -13,6 +13,8 @@ rict_boundary(map, plan, seam, columns, adj_col = "adj", as_gt = TRUE)
 
 \item{seam}{Pair of districts in \code{plan} to focus on.}
 
+\item{columns}{columns in \code{map} to display in the output}
+
 \item{adj_col}{Name of column in \code{map} that contains adjacency information.}
 
 \item{as_gt}{Logical. Should output be a \code{gt} table? Default: \code{TRUE}.}

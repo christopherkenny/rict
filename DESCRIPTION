@@ -5,26 +5,23 @@ Authors@R:
     person(given = "Christopher T.",
            family = "Kenny",
            role = c("aut", "cre"),
-           email = "christopherkenny@fas.harvard.edu",
+           email = "ctkenny@proton.me",
            comment = c(ORCID = "0000-0002-9386-6860"))
-Description: Builds out a suite of tools to include data to accompany maps. The 
+Description: Provides a suite of tools to create tables that accompany maps. The 
   focus is clean, informative tables for electoral outcomes, compactness, and other 
   district-level quantities. Most tools are aimed at the redistricting context, but
   are broadly applicable to other electoral data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.3
 Imports: 
     cli,
     dplyr,
     geomander,
     geos,
     ggplot2,
-    grid,
     gt,
-    palette,
-    png,
     purrr,
     redist,
     redistmetrics,
