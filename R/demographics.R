@@ -38,13 +38,26 @@ rict_demographics <- function(map, plan, normalize = TRUE, as_gt = TRUE) {
 
 }
 
-# tallyiers ----
+#' Tally population columns by district
+#'
+#' @param map `r template_var_map()`
+#' @param plan `r template_var_plan()`
+#' @param pop_cols <[`tidy-select`][dplyr::dplyr_tidy_select]> columns to tally.
+#'   Default: columns starting with `"pop_"`.
+#' @param pop Name of the total population column. Default: `"pop"`.
+#' @param normalize Logical. Normalize subcategory columns by total? Default: `FALSE`.
+#'
+#' @return A [tibble::tibble] with one row per district.
+#' @export
+#'
+#' @examples
+#' tally_pop(wv, wv$cd_2020, normalize = TRUE)
 tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'pop',
                       normalize = FALSE) {
 
   pop_cols <- map |>
     tibble::as_tibble() |>
-    dplyr::select(pop_cols) |>
+    dplyr::select({{ pop_cols }}) |>
     names()
   map <- map |>
     tibble::as_tibble() |>
@@ -56,16 +69,35 @@ tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'p
     )
 
   if (normalize) {
-    .pop <-rlang::eval_tidy(rlang::ensym(pop), map)
+    .pop <- map[[pop]]
     map <- map |>
       dplyr::mutate(
-        dplyr::across(dplyr::all_of(pop_cols), .fns = function(x) x / !!rlang::ensym(pop))
+        dplyr::across(dplyr::all_of(pop_cols), .fns = function(x) x / .pop)
       )
   }
 
   map
 }
+
+#' Tally voting-age population columns by district
+#'
+#' @param map `r template_var_map()`
+#' @param plan `r template_var_plan()`
+#' @param vap_cols <[`tidy-select`][dplyr::dplyr_tidy_select]> columns to tally.
+#'   Default: columns starting with `"vap_"`.
+#' @param vap Name of the total VAP column. Default: `"vap"`.
+#' @param normalize Logical. Normalize subcategory columns by total? Default: `FALSE`.
+#'
+#' @return A [tibble::tibble] with one row per district.
+#' @export
+#'
+#' @examples
+#' tally_vap(wv, wv$cd_2020, normalize = TRUE)
 tally_vap <- function(map, plan, vap_cols = dplyr::starts_with('vap_'), vap = 'vap',
                       normalize = FALSE) {
-  tally_pop(map, plan, pop_cols = vap_cols, pop = vap, normalize = normalize)
+  vap_cols <- map |>
+    tibble::as_tibble() |>
+    dplyr::select({{ vap_cols }}) |>
+    names()
+  tally_pop(map, plan, pop_cols = dplyr::all_of(vap_cols), pop = vap, normalize = normalize)
 }

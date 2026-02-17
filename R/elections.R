@@ -151,7 +151,7 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
       gt::cols_label(
         dplyr::any_of('e_dvs') ~ 'Contest',
         dplyr::any_of('avg_cycle') ~ 'Cycle',
-        ndshare ~ 'Pre-Average'
+        dplyr::any_of('ndshare') ~ 'Pre-Average'
       ) |>
       gt::cols_label_with(
         columns = dplyr::starts_with('avg_'),

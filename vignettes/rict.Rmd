@@ -1,0 +1,202 @@
+---
+title: "Getting Started with rict"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with rict}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rict)
+```
+
+## Overview
+
+`rict` produces clean, publication-ready tables for redistricting analysis. It is
+designed to accompany maps from `redist` and related packages, summarizing
+district-level data on population, demographics, elections, compactness,
+contiguity, and administrative splits.
+
+The package builds on two core R table libraries:
+
+- [`gt`](https://gt.rstudio.com/) for formatted HTML output
+- [`tibble`](https://tibble.tidyverse.org/) for data-frame output (set `as_gt = FALSE`)
+
+## Data
+
+`rict` ships with two example datasets from West Virginia:
+
+- `wv`: a `redist_map` object with county-level demographic, partisan, and
+  geographic data
+- `wv_plans`: a `redist_plans` object with sampled redistricting plans and the
+  enacted 2020 congressional plan
+
+```{r}
+data(wv)
+data(wv_plans)
+```
+
+## Quick start with `rict()`
+
+The simplest entry point is `rict()`, which creates a summary table from a
+`redist_map` or `redist_plans` object:
+```{r}
+rict(wv)
+```
+
+For a `redist_plans` object, specify which plan to display:
+
+```{r}
+rict(wv_plans, "cd_2020")
+```
+
+## Specialized tables
+
+For more targeted analysis, use the `rict_*` family of functions. Each accepts
+a `map` and `plan` argument, and returns either a `gt` table (default) or a
+tibble.
+
+### Population parity
+
+`rict_population()` shows total population per district and deviation from the
+ideal (equal) population:
+
+```{r}
+rict_population(map = wv, plan = wv$cd_2020)
+```
+
+### Demographics
+
+`rict_demographics()` breaks down population and voting-age population (VAP) by
+race and ethnicity. By default, subcategory columns are normalized to
+proportions:
+
+```{r}
+rict_demographics(map = wv, plan = wv$cd_2020)
+```
+
+Set `normalize = FALSE` to see raw counts:
+
+```{r}
+rict_demographics(map = wv, plan = wv$cd_2020, normalize = FALSE)
+```
+
+### Elections
+
+`rict_elections()` summarizes partisan election data. It automatically detects
+individual contest columns (e.g., `pre_20_dem_bid`), cycle-average columns
+(`adv_20`, `arv_20`), and normal vote columns (`ndv`, `nrv`), computing
+Democratic vote share for each:
+
+```{r}
+rict_elections(map = wv, plan = wv$cd_2020)
+```
+
+### Compactness
+
+`rict_compactness()` computes geometric compactness measures via
+`redistmetrics`. The default measures are Polsby-Popper, Schwartzberg, Reock,
+and Convex Hull:
+
+```{r}
+rict_compactness(map = wv, plan = wv$cd_2020)
+```
+
+You can supply custom measures as a named list of functions:
+
+```{r}
+rict_compactness(
+  map = wv, plan = wv$cd_2020,
+  measures = list(
+    "comp_polsby" = redistmetrics::comp_polsby,
+    "comp_lw" = redistmetrics::comp_lw
+  )
+)
+```
+
+### Contiguity
+
+`rict_contiguity()` checks how many connected pieces each district has:
+
+```{r}
+rict_contiguity(map = wv, plan = wv$cd_2020)
+```
+
+### Administrative splits
+
+`rict_splits()` counts how administrative boundaries (e.g., counties, states)
+are split across districts:
+
+```{r}
+rict_splits(map = wv, plan = wv$cd_2020, admin = "state")
+```
+
+### Component populations
+
+`rict_component()` breaks down population by administrative unit within each
+district:
+
+```{r}
+rict_component(map = wv, plan = wv$cd_2020, admin = "county")
+```
+
+## Getting tibbles instead of gt tables
+
+Every `rict_*` function accepts `as_gt = FALSE` to return a tibble instead of
+a `gt` table, making it easy to use the results for further computation:
+
+```{r}
+rict_elections(map = wv, plan = wv$cd_2020, as_gt = FALSE)
+```
+
+## Extending gt tables
+
+`rict` provides several helpers for working with `gt` tables:
+
+### Partisan color scales
+
+`data_color_party()` applies a red-to-blue color scale for Democratic vote share
+columns:
+
+```{r}
+rict(wv_plans, "cd_2020") |>
+  data_color_party(columns = "e_dvs")
+```
+
+### Geometry plots
+
+`gt_plot_sf()` embeds small maps of `sf` geometries into a `gt` table:
+
+```{r}
+wv_dist <- wv |> dplyr::group_by(cd_2020) |> dplyr::summarize()
+gt::gt(wv_dist) |> gt_plot_sf()
+```
+
+### Compactness plots
+
+`gt_plot_compactness()` adds visual compactness overlays (e.g., equal-area
+circles, convex hulls) to a table of compactness metrics:
+
+```{r}
+rict(wv_plans, "cd_2020") |>
+  gt_plot_compactness(wv, wv$cd_2020)
+```
+
+### Other gt utilities
+
+- `gt_add_column()`: add a new column to a `gt` table
+- `gt_get_data()`: extract the underlying tibble from a `gt` table
+- `gt_hide_lists()`: hide list-columns (e.g., adjacency lists) from display
+
+```{r}
+tab <- rict(wv)
+gt_get_data(tab)
+```

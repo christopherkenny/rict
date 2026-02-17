@@ -4,12 +4,15 @@
 \alias{rict_contiguity}
 \title{Display contiguity info in a table}
 \usage{
-rict_contiguity(map, plan, adj_col = "adj", as_gt = TRUE)
+rict_contiguity(map, plan, adj = NULL, adj_col = "adj", as_gt = TRUE)
 }
 \arguments{
 \item{map}{A \code{redist_map} or \code{sf} object.}
 
 \item{plan}{Column in \code{map} or vector of district assignments.}
+
+\item{adj}{An adjacency list (zero-indexed). If provided, used directly
+instead of looking up \code{adj_col} in \code{map}.}
 
 \item{adj_col}{Name of column in \code{map} that contains adjacency information.}
 

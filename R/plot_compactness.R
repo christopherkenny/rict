@@ -20,7 +20,7 @@ plot_compactness <- function(shp, plan,
   if (!length(fill_color) %in% 1:2) {
     cli::cli_abort('{.arg fill_color} must be length 1 or 2.')
   } else {
-    if (length(fill_color == 1)) {
+    if (length(fill_color) == 1) {
       fill_color[2] <- NA
     }
   }
@@ -76,6 +76,4 @@ circles_skew <- function(shp) {
   do.call('rbind', args = l)
 }
 
-# x <- wv |> dplyr::group_by(cd_2020) |> dplyr::summarise()
-# z <- lapply(, \(y) plot_compactness(y, shp = wv, plan = wv$cd_2020))
-# patchwork::wrap_plots(z, ncol = 1)
+
