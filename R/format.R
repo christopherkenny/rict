@@ -30,7 +30,8 @@ format_demog_string <- function(x) {
     'asian' = 'Asian',
     'nhpi' = 'NH/PI',
     'other' = 'Other',
-    'two' = 'Two+'
+    'two' = 'Two+',
+    '_', ' '
   )
 
   stringr::str_replace_all(x, rplc)
