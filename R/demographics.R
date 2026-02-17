@@ -38,20 +38,6 @@ rict_demographics <- function(map, plan, normalize = TRUE, as_gt = TRUE) {
 
 }
 
-#' Tally population columns by district
-#'
-#' @param map `r template_var_map()`
-#' @param plan `r template_var_plan()`
-#' @param pop_cols <[`tidy-select`][dplyr::dplyr_tidy_select]> columns to tally.
-#'   Default: columns starting with `"pop_"`.
-#' @param pop Name of the total population column. Default: `"pop"`.
-#' @param normalize Logical. Normalize subcategory columns by total? Default: `FALSE`.
-#'
-#' @return A [tibble::tibble] with one row per district.
-#' @export
-#'
-#' @examples
-#' tally_pop(wv, wv$cd_2020, normalize = TRUE)
 tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'pop',
                       normalize = FALSE) {
 
@@ -79,20 +65,6 @@ tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'p
   map
 }
 
-#' Tally voting-age population columns by district
-#'
-#' @param map `r template_var_map()`
-#' @param plan `r template_var_plan()`
-#' @param vap_cols <[`tidy-select`][dplyr::dplyr_tidy_select]> columns to tally.
-#'   Default: columns starting with `"vap_"`.
-#' @param vap Name of the total VAP column. Default: `"vap"`.
-#' @param normalize Logical. Normalize subcategory columns by total? Default: `FALSE`.
-#'
-#' @return A [tibble::tibble] with one row per district.
-#' @export
-#'
-#' @examples
-#' tally_vap(wv, wv$cd_2020, normalize = TRUE)
 tally_vap <- function(map, plan, vap_cols = dplyr::starts_with('vap_'), vap = 'vap',
                       normalize = FALSE) {
   vap_cols <- map |>
