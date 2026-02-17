@@ -10,7 +10,6 @@
 #' @examples
 #' rict_population(map = wv, plan = wv$cd_2020)
 rict_population <- function(map, plan, as_gt = TRUE) {
-
   map$District <- plan
   tgt_pop <- round(sum(map$pop) / length(unique(plan)))
 
@@ -37,4 +36,3 @@ rict_population <- function(map, plan, as_gt = TRUE) {
     df
   }
 }
-

@@ -32,8 +32,7 @@
 \item{\code{pre_20_dem_bid}}{votes for Biden 2020, President (D)}
 \item{\code{pre_20_rep_tru}}{votes for Trump 2020, President (R)}
 \item{\code{arv_20}}{average Republican vote in 2020}
-\item{\code{adv_20}}{average Democratic vote in 2016}
-\item{\code{nrv}}{normal Republican vote}
+\item{\code{adv_20}}{average Democratic vote in 2020}#' \item{\code{nrv}}{normal Republican vote}
 \item{\code{ndv}}{normal Democratic vote}
 \item{\code{ndshare}}{normal Democratic share in the district}
 \item{\code{e_dvs}}{expected Democratic share in the district}

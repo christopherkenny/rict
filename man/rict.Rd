@@ -2,22 +2,24 @@
 % Please edit documentation in R/rict.R
 \name{rict}
 \alias{rict}
-\title{Title}
+\title{Create a Summary Table from Redistricting Data}
 \usage{
 rict(x, plan, ...)
 }
 \arguments{
-\item{x}{redist_map or redist_plans}
+\item{x}{A \code{redist_map} or \code{redist_plans} object.}
 
-\item{plan}{integer vector or draw name}
+\item{plan}{For \code{redist_plans}: draw name or number to display.
+For \code{redist_map}: column or vector of district assignments
+(defaults to existing plan via \code{\link[redist:get_existing]{redist::get_existing()}}).}
 
-\item{...}{other arguments}
+\item{...}{Additional arguments passed to methods.}
 }
 \value{
-A \link[gt:gt]{gt::gt}
+A \link[gt:gt]{gt::gt} table
 }
 \description{
-Title
+Creates a formatted \link[gt:gt]{gt::gt} table summarizing redistricting plans or maps.
 }
 \examples{
 data(wv_plans)

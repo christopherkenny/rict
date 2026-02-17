@@ -16,10 +16,7 @@ format_compactness <- function(x) {
     'comp_y_sym' = 'Y Symmetry'
   )
 
-  for (i in seq_along(rplc)) {
-    x <- stringr::str_replace(x, pattern = names(rplc)[i], replacement = rplc[i])
-  }
-  x
+  stringr::str_replace_all(x, rplc)
 }
 
 format_demog_string <- function(x) {
@@ -33,13 +30,11 @@ format_demog_string <- function(x) {
     'asian' = 'Asian',
     'nhpi' = 'NH/PI',
     'other' = 'Other',
-    'two' = 'Two+'
+    'two' = 'Two+',
+    '_', ' '
   )
 
-  for (i in seq_along(rplc)) {
-    x <- stringr::str_replace(x, pattern = names(rplc)[i], replacement = rplc[i])
-  }
-  x
+  stringr::str_replace_all(x, rplc)
 }
 
 format_election_names <- function(x) {
@@ -51,9 +46,5 @@ format_election_names <- function(x) {
     'sos' = 'SoS'
   )
 
-  for (i in seq_along(rplc)) {
-    x <- stringr::str_replace(x, pattern = names(rplc)[i], replacement = rplc[i])
-  }
-  x
+  stringr::str_replace_all(x, rplc)
 }
-

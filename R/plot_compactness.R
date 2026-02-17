@@ -12,15 +12,17 @@
 #' @examples
 #' plot_compactness(wv, wv$cd_2020)
 plot_compactness <- function(shp, plan,
-                             measure = c('Polsby Popper', 'Schwartzberg',
-                                         'Reock', 'Convex Hull', 'Length Width',
-                                         'Skew', 'Box Reock'),
+                             measure = c(
+                               'Polsby Popper', 'Schwartzberg',
+                               'Reock', 'Convex Hull', 'Length Width',
+                               'Skew', 'Box Reock'
+                             ),
                              fill_color = 'deeppink') {
   measure <- match.arg(arg = measure)
   if (!length(fill_color) %in% 1:2) {
     cli::cli_abort('{.arg fill_color} must be length 1 or 2.')
   } else {
-    if (length(fill_color == 1)) {
+    if (length(fill_color) == 1) {
       fill_color[2] <- NA
     }
   }
@@ -34,13 +36,13 @@ plot_compactness <- function(shp, plan,
     sf::st_as_sf()
 
   fn <- switch(measure,
-               'Polsby Popper' = equal_area_pp,
-               'Schwartzberg' = equal_area_sw,
-               'Reock' = \(x) sf::st_as_sf(geos::geos_minimum_bounding_circle(x)),
-               'Convex Hull' = \(x) sf::st_as_sf(geos::geos_convex_hull(x)),
-               'Length Width' = \(x) sf::st_as_sf(geos::geos_envelope_rct(x)),
-               'Skew' = circles_skew,
-               'Box Reock' = \(x) sf::st_as_sf(geos::geos_minimum_rotated_rectangle(x))
+    'Polsby Popper' = equal_area_pp,
+    'Schwartzberg' = equal_area_sw,
+    'Reock' = \(x) sf::st_as_sf(geos::geos_minimum_bounding_circle(x)),
+    'Convex Hull' = \(x) sf::st_as_sf(geos::geos_convex_hull(x)),
+    'Length Width' = \(x) sf::st_as_sf(geos::geos_envelope_rct(x)),
+    'Skew' = circles_skew,
+    'Box Reock' = \(x) sf::st_as_sf(geos::geos_minimum_rotated_rectangle(x))
   )
   comp_shp <- fn(shp) |>
     dplyr::mutate(rict_plan = shp$rict_plan)
@@ -49,8 +51,10 @@ plot_compactness <- function(shp, plan,
     shp |>
       redist::filter(.data$rict_plan == .dist) |>
       ggplot2::ggplot() +
-      ggplot2::geom_sf(data = dplyr::filter(comp_shp, .data$rict_plan == .dist),
-                       fill = fill_color[2], linewidth = 1) +
+      ggplot2::geom_sf(
+        data = dplyr::filter(comp_shp, .data$rict_plan == .dist),
+        fill = fill_color[2], linewidth = 1
+      ) +
       ggplot2::geom_sf(fill = fill_color[1]) +
       theme_map()
   })
@@ -63,7 +67,7 @@ equal_area_pp <- function(shp) {
 }
 
 equal_area_sw <- function(shp) {
-  radii <- sqrt(geos::geos_area(shp) /  pi)
+  radii <- sqrt(geos::geos_area(shp) / pi)
   sf::st_as_sf(geos::geos_buffer(geos::geos_centroid(shp), radii))
 }
 
@@ -75,7 +79,3 @@ circles_skew <- function(shp) {
   })
   do.call('rbind', args = l)
 }
-
-# x <- wv |> dplyr::group_by(cd_2020) |> dplyr::summarise()
-# z <- lapply(, \(y) plot_compactness(y, shp = wv, plan = wv$cd_2020))
-# patchwork::wrap_plots(z, ncol = 1)

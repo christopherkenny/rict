@@ -1,10 +1,14 @@
-#' Title
+#' Create a Summary Table from Redistricting Data
 #'
-#' @param x redist_map or redist_plans
-#' @param plan integer vector or draw name
-#' @param ... other arguments
+#' Creates a formatted [gt::gt] table summarizing redistricting plans or maps.
 #'
-#' @return A [gt::gt]
+#' @param x A `redist_map` or `redist_plans` object.
+#' @param plan For `redist_plans`: draw name or number to display.
+#'   For `redist_map`: column or vector of district assignments
+#'   (defaults to existing plan via [redist::get_existing()]).
+#' @param ... Additional arguments passed to methods.
+#'
+#' @return A [gt::gt] table
 #' @export
 #'
 #' @examples
@@ -19,7 +23,7 @@ rict <- function(x, plan, ...) {
 rict.redist_plans <- function(x, plan, ...) {
   x |>
     redist::filter(.data$draw == plan) |>
-    dplyr::select(-.data$draw) |>
+    dplyr::select(-'draw') |>
     gt::gt()
 }
 
@@ -27,9 +31,9 @@ rict.redist_plans <- function(x, plan, ...) {
 #' @export
 rict.redist_map <- function(x, plan = redist::get_existing(x), ...) {
   x |>
-    dplyr::mutate(district = dplyr::all_of(.env$plan)) |>
+    dplyr::mutate(district = .env$plan) |>
     redist::merge_by(.data$district, by_existing = FALSE, collapse_chr = FALSE) |>
     dplyr::as_tibble() |>
-    dplyr::select(-.data$adj) |># dplyr::glimpse()
+    dplyr::select(-'adj') |>
     gt::gt()
 }
