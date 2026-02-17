@@ -1,12 +1,3 @@
-#' Format compactness measure names for display
-#'
-#' @param x Character vector of compactness column names (e.g., `"comp_polsby"`).
-#'
-#' @return Character vector with human-readable names.
-#' @export
-#'
-#' @examples
-#' format_compactness("comp_polsby")
 format_compactness <- function(x) {
   rplc <- c(
     'comp_bc' = 'Boyce-Clark',
@@ -28,15 +19,6 @@ format_compactness <- function(x) {
   stringr::str_replace_all(x, rplc)
 }
 
-#' Format demographic column names for display
-#'
-#' @param x Character vector of demographic suffixes (e.g., `"white"`, `"hisp"`).
-#'
-#' @return Character vector with human-readable names.
-#' @export
-#'
-#' @examples
-#' format_demog_string("white")
 format_demog_string <- function(x) {
   rplc <- c(
     'pop' = 'Pop.',
@@ -54,15 +36,6 @@ format_demog_string <- function(x) {
   stringr::str_replace_all(x, rplc)
 }
 
-#' Format election type abbreviations for display
-#'
-#' @param x Character vector of election abbreviations (e.g., `"pre"`, `"uss"`).
-#'
-#' @return Character vector with human-readable names.
-#' @export
-#'
-#' @examples
-#' format_election_names("pre")
 format_election_names <- function(x) {
   rplc <- c(
     'pre' = 'Pres',
@@ -74,4 +47,3 @@ format_election_names <- function(x) {
 
   stringr::str_replace_all(x, rplc)
 }
-
