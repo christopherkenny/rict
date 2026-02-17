@@ -15,7 +15,6 @@
 #'   gt_plot_compactness(wv, wv$cd_2020)
 gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
                                 height = 200, ...) {
-
   if (missing(plan) & inherits(shp, 'redist_map')) {
     plan <- redist::get_existing(shp)
   }
@@ -35,20 +34,23 @@ gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
     nom <- noms[i]
     tab <<- tab |> # TODO bad assignment, but good for mwe
       gt_add_column(.col = !!nom, .val = NA) |>
-      gt::text_transform(locations = gt::cells_body(columns = !!rlang::enquo(nom)),
-                         fn = function(x) {
-                           lapply(cp, gt::ggplot_image, height = gt::px(height))
-                         })
+      gt::text_transform(
+        locations = gt::cells_body(columns = !!rlang::enquo(nom)),
+        fn = function(x) {
+          lapply(cp, gt::ggplot_image, height = gt::px(height))
+        }
+      )
   })
-  #}
+  # }
 
   tab
 }
 
 
-
 guess_comp <- function(x) {
-  if (is.null(x)) return(NULL)
+  if (is.null(x)) {
+    return(NULL)
+  }
 
   noms <- names(gt_get_data(x))
 

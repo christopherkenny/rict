@@ -22,6 +22,8 @@ A \link[gt:gt]{gt::gt}
 Add \code{sf} Geometry Plots to a \code{gt}
 }
 \examples{
-wv_dist <- wv |> dplyr::group_by(cd_2020) |> dplyr::summarize()
+wv_dist <- wv |>
+  dplyr::group_by(cd_2020) |>
+  dplyr::summarize()
 gt::gt(wv_dist) |> gt_plot_sf()
 }

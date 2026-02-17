@@ -23,7 +23,7 @@ rict <- function(x, plan, ...) {
 rict.redist_plans <- function(x, plan, ...) {
   x |>
     redist::filter(.data$draw == plan) |>
-    dplyr::select(-"draw") |>
+    dplyr::select(-'draw') |>
     gt::gt()
 }
 
@@ -34,6 +34,6 @@ rict.redist_map <- function(x, plan = redist::get_existing(x), ...) {
     dplyr::mutate(district = .env$plan) |>
     redist::merge_by(.data$district, by_existing = FALSE, collapse_chr = FALSE) |>
     dplyr::as_tibble() |>
-    dplyr::select(-"adj") |>
+    dplyr::select(-'adj') |>
     gt::gt()
 }

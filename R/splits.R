@@ -15,7 +15,6 @@
 #' rict_splits(map = wv, plan = wv$cd_2020, admin = 'state')
 rict_splits <- function(map, plan, admin = NULL, subadmin = NULL, total = admin,
                         multi = admin, as_gt = TRUE) {
-
   admin_out <- lapply(seq_along(admin), function(i) {
     redistmetrics::splits_admin(plan, map, !!rlang::sym(admin[i]))
   })

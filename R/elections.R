@@ -10,7 +10,6 @@
 #' @examples
 #' rict_elections(map = wv, plan = wv$cd_2020)
 rict_elections <- function(map, plan, as_gt = TRUE) {
-
   elecs <- map |>
     tibble::as_tibble() |>
     dplyr::select(dplyr::contains('_dem_'), dplyr::ends_with('_dem')) |>
@@ -22,8 +21,8 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
     vote_d <- map |>
       dplyr::as_tibble() |>
       dplyr::select(
-        dplyr::starts_with(paste0(el, "_dem")),
-        dplyr::starts_with(paste0(el, "_rep"))
+        dplyr::starts_with(paste0(el, '_dem')),
+        dplyr::starts_with(paste0(el, '_rep'))
       )
     if (ncol(vote_d) != 2) {
       return(NULL)
@@ -38,7 +37,7 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
     ) |>
       dplyr::group_by(.data$District) |>
       dplyr::summarise(
-        {{el}} := sum(dvote, na.rm = TRUE) / (sum(dvote, na.rm = TRUE) + sum(rvote, na.rm = TRUE))
+        {{ el }} := sum(dvote, na.rm = TRUE) / (sum(dvote, na.rm = TRUE) + sum(rvote, na.rm = TRUE))
       )
   }) |>
     purrr::discard(.p = function(d) is.null(d))
@@ -90,7 +89,7 @@ rict_elections <- function(map, plan, as_gt = TRUE) {
     ) |>
       dplyr::group_by(.data$District) |>
       dplyr::summarise(
-        {{el}} := sum(dvote, na.rm = TRUE) / (sum(dvote, na.rm = TRUE) + sum(rvote, na.rm = TRUE))
+        {{ el }} := sum(dvote, na.rm = TRUE) / (sum(dvote, na.rm = TRUE) + sum(rvote, na.rm = TRUE))
       )
   }) |>
     purrr::discard(.p = function(d) is.null(d))

@@ -16,5 +16,7 @@ A \link[gt:gt]{gt::gt}
 Hide List Columns in \code{gt}
 }
 \examples{
-wv |> gt::gt() |> gt_hide_lists()
+wv |>
+  gt::gt() |>
+  gt_hide_lists()
 }

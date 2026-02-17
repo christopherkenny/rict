@@ -35,12 +35,10 @@ rict_demographics <- function(map, plan, normalize = TRUE, as_gt = TRUE) {
   } else {
     df
   }
-
 }
 
 tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'pop',
                       normalize = FALSE) {
-
   pop_cols <- map |>
     tibble::as_tibble() |>
     dplyr::select({{ pop_cols }}) |>

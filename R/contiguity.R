@@ -13,7 +13,6 @@
 #' @examples
 #' rict_contiguity(map = wv, plan = wv$cd_2020)
 rict_contiguity <- function(map, plan, adj = NULL, adj_col = 'adj', as_gt = TRUE) {
-
   if (!is.null(adj)) {
     adj_list <- adj
   } else if (adj_col %in% names(map)) {
