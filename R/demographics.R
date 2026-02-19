@@ -41,10 +41,12 @@ tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'p
                       normalize = FALSE) {
   pop_cols <- map |>
     sf::st_drop_geometry() |>
+    dplyr::as_tibble() |>
     dplyr::select({{ pop_cols }}) |>
     names()
   map <- map |>
     sf::st_drop_geometry() |>
+    dplyr::as_tibble() |>
     dplyr::mutate(District = plan) |>
     dplyr::group_by(.data$District) |>
     dplyr::summarize(
@@ -66,6 +68,7 @@ tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'p
 tally_vap <- function(map, plan, vap_cols = dplyr::starts_with('vap_'), vap = 'vap',
                       normalize = FALSE) {
   vap_cols <- map |>
+    sf::st_drop_geometry() |>
     tibble::as_tibble() |>
     dplyr::select({{ vap_cols }}) |>
     names()
