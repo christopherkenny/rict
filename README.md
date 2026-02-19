@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/christopherkenny/rict/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/christopherkenny/rict/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `rict` provides clean, formatted [`gt`](https://gt.rstudio.com/) tables
