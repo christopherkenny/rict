@@ -40,11 +40,11 @@ rict_demographics <- function(map, plan, normalize = TRUE, as_gt = TRUE) {
 tally_pop <- function(map, plan, pop_cols = dplyr::starts_with('pop_'), pop = 'pop',
                       normalize = FALSE) {
   pop_cols <- map |>
-    tibble::as_tibble() |>
+    sf::st_drop_geometry() |>
     dplyr::select({{ pop_cols }}) |>
     names()
   map <- map |>
-    tibble::as_tibble() |>
+    sf::st_drop_geometry() |>
     dplyr::mutate(District = plan) |>
     dplyr::group_by(.data$District) |>
     dplyr::summarize(

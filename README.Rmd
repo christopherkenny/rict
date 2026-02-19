@@ -18,22 +18,100 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `rict` is to provide clean, election tables to accompany maps.
+`rict` provides clean, formatted [`gt`](https://gt.rstudio.com/) tables to accompany redistricting maps.
+It is designed to complement [`redist`](https://alarm-redist.org/redist/) and [`redistmetrics`](https://alarm-redist.org/redistmetrics/), but works with any electoral or demographic data.
 
 ## Installation
 
-You can install the development version of `rict` from [GitHub](https://github.com/rict) with:
+You can install the development version of `rict` from [GitHub](https://github.com/christopherkenny/rict) with:
 
 ``` r
 pak::pak('christopherkenny/rict')
 ```
 
-## Example
+## Overview
 
-If you have a `redist_map`, you can call `rict()` to produce a district-level summary table.
+`rict` provides a family of `rict_*()` functions, each producing a formatted table for a specific redistricting quantity:
 
-```{r example}
+| Function | Description |
+|---|---|
+| `rict()` | District-level summary from a `redist_map` or `redist_plans` |
+| `rict_demographics()` | Population and voting-age population by race/ethnicity |
+| `rict_elections()` | Democratic vote shares across electoral contests |
+| `rict_compactness()` | Common compactness scores (Polsby-Popper, Reock, etc.) |
+| `rict_population()` | Population and deviation from the ideal district size |
+| `rict_splits()` | Number of administrative units split by the plan |
+| `rict_contiguity()` | Number of contiguous pieces per district |
+
+Additional helpers embed visuals directly inside a `gt` table:
+
+| Function | Description |
+|---|---|
+| `gt_plot_sf()` | Embed district map thumbnails |
+| `gt_plot_compactness()` | Embed compactness geometry plots |
+
+## Examples
+
+```{r setup, include = FALSE}
 library(rict)
-rict(wv)
+```
+
+### Demographics
+
+`rict_demographics()` summarizes total population and voting-age population by race/ethnicity across districts.
+
+```{r demographics, eval = FALSE}
+library(rict)
+rict_demographics(map = wv, plan = wv$cd_2020)
+```
+
+```{r demographics-img, echo = FALSE, message = FALSE, warning = FALSE}
+tab <- rict_demographics(map = wv, plan = wv$cd_2020)
+gt::gtsave(tab, filename = "man/figures/README-demographics.png", expand = 10)
+knitr::include_graphics("man/figures/README-demographics.png")
+```
+
+### Compactness
+
+`rict_compactness()` tabulates common geometric compactness scores for each district.
+
+```{r compactness, eval = FALSE}
+rict_compactness(map = wv, plan = wv$cd_2020)
+```
+
+```{r compactness-img, echo = FALSE, message = FALSE, warning = FALSE}
+tab <- rict_compactness(map = wv, plan = wv$cd_2020)
+gt::gtsave(tab, filename = "man/figures/README-compactness.png", expand = 10)
+knitr::include_graphics("man/figures/README-compactness.png")
+```
+
+### Elections
+
+`rict_elections()` shows Democratic vote shares for each electoral contest, along with normal partisan averages.
+
+```{r elections, eval = FALSE}
+rict_elections(map = wv, plan = wv$cd_2020)
+```
+
+```{r elections-img, echo = FALSE, message = FALSE, warning = FALSE}
+tab <- rict_elections(map = wv, plan = wv$cd_2020)
+gt::gtsave(tab, filename = "man/figures/README-elections.png", expand = 10)
+knitr::include_graphics("man/figures/README-elections.png")
+```
+
+### Plans
+
+For a `redist_plans` object, `rict()` formats a single draw as a table.
+
+```{r plans, eval = FALSE}
+data(wv_plans)
+rict(wv_plans, 'cd_2020')
+```
+
+```{r plans-img, echo = FALSE, message = FALSE, warning = FALSE}
+data(wv_plans)
+tab <- rict(wv_plans, 'cd_2020')
+gt::gtsave(tab, filename = "man/figures/README-plans.png", expand = 10)
+knitr::include_graphics("man/figures/README-plans.png")
 ```
 
