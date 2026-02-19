@@ -31,7 +31,7 @@ format_demog_string <- function(x) {
     'nhpi' = 'NH/PI',
     'other' = 'Other',
     'two' = 'Two+',
-    '_', ' '
+    '_' = ' '
   )
 
   stringr::str_replace_all(x, rplc)
