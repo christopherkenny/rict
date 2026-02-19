@@ -1,0 +1,164 @@
+# rict
+
+`rict` provides clean, formatted [`gt`](https://gt.rstudio.com/) tables
+to accompany redistricting maps. It is designed to complement
+[`redist`](https://alarm-redist.org/redist/) and
+[`redistmetrics`](https://alarm-redist.org/redistmetrics/), but works
+with any electoral or demographic data.
+
+## Installation
+
+You can install the development version of `rict` from
+[GitHub](https://github.com/christopherkenny/rict) with:
+
+``` r
+pak::pak('christopherkenny/rict')
+```
+
+## Overview
+
+`rict` provides a family of `rict_*()` functions, each producing a
+formatted table for a specific redistricting quantity:
+
+| Function                                                                                  | Description                                                  |
+|-------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [`rict()`](http://christophertkenny.com/rict/reference/rict.md)                           | District-level summary from a `redist_map` or `redist_plans` |
+| [`rict_demographics()`](http://christophertkenny.com/rict/reference/rict_demographics.md) | Population and voting-age population by race/ethnicity       |
+| [`rict_elections()`](http://christophertkenny.com/rict/reference/rict_elections.md)       | Democratic vote shares across electoral contests             |
+| [`rict_compactness()`](http://christophertkenny.com/rict/reference/rict_compactness.md)   | Common compactness scores (Polsby-Popper, Reock, etc.)       |
+| [`rict_population()`](http://christophertkenny.com/rict/reference/rict_population.md)     | Population and deviation from the ideal district size        |
+| [`rict_splits()`](http://christophertkenny.com/rict/reference/rict_splits.md)             | Number of administrative units split by the plan             |
+| [`rict_contiguity()`](http://christophertkenny.com/rict/reference/rict_contiguity.md)     | Number of contiguous pieces per district                     |
+
+Additional helpers embed visuals directly inside a `gt` table:
+
+| Function                                                                                      | Description                      |
+|-----------------------------------------------------------------------------------------------|----------------------------------|
+| [`gt_plot_sf()`](http://christophertkenny.com/rict/reference/gt_plot_sf.md)                   | Embed district map thumbnails    |
+| [`gt_plot_compactness()`](http://christophertkenny.com/rict/reference/gt_plot_compactness.md) | Embed compactness geometry plots |
+
+## Examples
+
+### Demographics
+
+[`rict_demographics()`](http://christophertkenny.com/rict/reference/rict_demographics.md)
+summarizes total population and voting-age population by race/ethnicity
+across districts.
+
+``` r
+library(rict)
+rict_demographics(map = wv, plan = wv$cd_2020)
+```
+
+![](reference/figures/README-demographics.png)
+
+### Compactness
+
+[`rict_compactness()`](http://christophertkenny.com/rict/reference/rict_compactness.md)
+tabulates common geometric compactness scores for each district.
+
+``` r
+rict_compactness(map = wv, plan = wv$cd_2020)
+```
+
+![](reference/figures/README-compactness.png)
+
+### Elections
+
+[`rict_elections()`](http://christophertkenny.com/rict/reference/rict_elections.md)
+shows Democratic vote shares for each electoral contest, along with
+normal partisan averages.
+
+``` r
+rict_elections(map = wv, plan = wv$cd_2020)
+```
+
+![](reference/figures/README-elections.png)
+
+### Plans
+
+For a `redist_plans` object,
+[`rict()`](http://christophertkenny.com/rict/reference/rict.md) formats
+a single draw as a table.
+
+``` r
+data(wv_plans)
+rict(wv_plans, 'cd_2020')
+```
+
+![](reference/figures/README-plans.png)
+
+# Package index
+
+## All functions
+
+- [`data_color_party()`](http://christophertkenny.com/rict/reference/data_color_party.md)
+  : Color Columns with Partisan Scales
+
+- [`gt_add_column()`](http://christophertkenny.com/rict/reference/gt_add_column.md)
+  :
+
+  Add a column to a `gt`
+
+- [`gt_get_data()`](http://christophertkenny.com/rict/reference/gt_get_data.md)
+  :
+
+  Extract data from a `gt`
+
+- [`gt_hide_lists()`](http://christophertkenny.com/rict/reference/gt_hide_lists.md)
+  :
+
+  Hide List Columns in `gt`
+
+- [`gt_plot_compactness()`](http://christophertkenny.com/rict/reference/gt_plot_compactness.md)
+  :
+
+  Add Compactness Metric Plots to a `gt`
+
+- [`gt_plot_sf()`](http://christophertkenny.com/rict/reference/gt_plot_sf.md)
+  :
+
+  Add `sf` Geometry Plots to a `gt`
+
+- [`plot_compactness()`](http://christophertkenny.com/rict/reference/plot_compactness.md)
+  : Create Plots for Common Compactness Metrics
+
+- [`rict()`](http://christophertkenny.com/rict/reference/rict.md) :
+  Create a Summary Table from Redistricting Data
+
+- [`rict_boundary()`](http://christophertkenny.com/rict/reference/rict_boundary.md)
+  : Display boundary information in a table
+
+- [`rict_compactness()`](http://christophertkenny.com/rict/reference/rict_compactness.md)
+  : Display compactness measures in a table
+
+- [`rict_component()`](http://christophertkenny.com/rict/reference/rict_component.md)
+  : Display population data by administrative unit in a table
+
+- [`rict_contiguity()`](http://christophertkenny.com/rict/reference/rict_contiguity.md)
+  : Display contiguity info in a table
+
+- [`rict_demographics()`](http://christophertkenny.com/rict/reference/rict_demographics.md)
+  : Display demographic data in a table
+
+- [`rict_elections()`](http://christophertkenny.com/rict/reference/rict_elections.md)
+  : Display electoral data in a table
+
+- [`rict_population()`](http://christophertkenny.com/rict/reference/rict_population.md)
+  : Display population parity in a table
+
+- [`rict_splits()`](http://christophertkenny.com/rict/reference/rict_splits.md)
+  : Display splits data in a table
+
+- [`wv`](http://christophertkenny.com/rict/reference/wv.md) : West
+  Virginia Geographic Data
+
+- [`wv_plans`](http://christophertkenny.com/rict/reference/wv_plans.md)
+  : West Virginia Redistricting Plans
+
+# Articles
+
+### All vignettes
+
+- [Getting Started with
+  rict](http://christophertkenny.com/rict/articles/rict.md):
