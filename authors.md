@@ -7,6 +7,9 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/christopherkenny/rict/blob/main/DESCRIPTION)
+
 Kenny C (2026). *rict: Redistricting in Clean Tables*. R package version
 0.0.0.9000, <http://christophertkenny.com/rict/>.
 
