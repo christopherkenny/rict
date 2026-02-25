@@ -1,6 +1,6 @@
 #' Add `sf` Geometry Plots to a `gt`
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #' @param name Name for `sf` column in `gt`
 #' @param height height, in pixels, of each image. Default is 100
 #' @param ... additional arguments passed on to `geom_sf()`

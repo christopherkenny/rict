@@ -1,6 +1,6 @@
 #' Add Compactness Metric Plots to a `gt`
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #' @param shp An `sf` object
 #' @param plan A numeric vector with one entry for each precinct in `shp`.
 #' @param measures A character vector indicating which measures to plot. Uses `guess_comp()` if not supplied.

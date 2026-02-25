@@ -8,7 +8,7 @@
 #' @param multi column names in `map` without `NA` values to calculate multi-splits for
 #' @param as_gt `r template_var_as_gt()`
 #'
-#' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
+#' @return a `gt::gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
 #' @export
 #'
 #' @examples

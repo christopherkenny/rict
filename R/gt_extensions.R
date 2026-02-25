@@ -1,6 +1,6 @@
 #' Add a column to a `gt`
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #' @param .col column name
 #' @param .val value to add
 #' @param ... additional arguments to pass to [dplyr::add_row]
@@ -28,7 +28,7 @@ gt_add_column <- function(tab, .col, .val, ...) {
 
 #' Extract data from a `gt`
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #'
 #' @return A [dplyr::tibble]
 #' @export
@@ -41,7 +41,7 @@ gt_get_data <- function(tab) {
 
 #' Hide List Columns in `gt`
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #'
 #' @return A [gt::gt]
 #' @export

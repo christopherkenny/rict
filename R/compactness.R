@@ -5,7 +5,7 @@
 #' @param measures a list of named functions to score compactness
 #' @param as_gt `r template_var_as_gt()`
 #'
-#' @return a `gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
+#' @return a `gt::gt_tbl` if `as_gt = TRUE`, otherwise a [tibble::tibble]
 #' @export
 #'
 #' @examples

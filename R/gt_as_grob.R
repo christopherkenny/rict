@@ -1,6 +1,6 @@
 # #' Convert `gt` to grob
 # #'
-# #' @param tab A `gt` table with class `gt_tbl`
+# #' @param tab A `gt` table with class `gt::gt_tbl`
 # #'
 # #' @return A grob
 # #' @export

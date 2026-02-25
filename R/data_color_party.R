@@ -1,6 +1,6 @@
 #' Color Columns with Partisan Scales
 #'
-#' @param tab A `gt` table with class `gt_tbl`
+#' @param tab A `gt` table with class `gt::gt_tbl`
 #' @param columns the columns to color with partisan colors
 #' @param ... additional arguments passed on to `gt::data_color()`
 #'
