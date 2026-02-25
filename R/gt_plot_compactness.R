@@ -28,11 +28,10 @@ gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
   })
   noms <- gg_comp_names(measures)
 
-  # for (i in seq_along(cps)) {
-  lapply(seq_along(cps), function(i) {
+  for (i in seq_along(cps)) {
     cp <- cps[[i]]
     nom <- noms[i]
-    tab <<- tab |> # TODO bad assignment, but good for mwe
+    tab <- tab |>
       gt_add_column(.col = !!nom, .val = NA) |>
       gt::text_transform(
         locations = gt::cells_body(columns = !!rlang::enquo(nom)),
@@ -40,8 +39,7 @@ gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
           lapply(cp, gt::ggplot_image, height = gt::px(height))
         }
       )
-  })
-  # }
+  }
 
   tab
 }

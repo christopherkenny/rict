@@ -22,6 +22,6 @@ A \link[gt:gt]{gt::gt} table
 Creates a formatted \link[gt:gt]{gt::gt} table summarizing redistricting plans or maps.
 }
 \examples{
-data(wv_plans)
 rict(wv)
+rict(wv_plans, 'cd_2020')
 }

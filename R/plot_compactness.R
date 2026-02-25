@@ -49,7 +49,7 @@ plot_compactness <- function(shp, plan,
 
   lapply(sort(shp$rict_plan), function(.dist) {
     shp |>
-      redist::filter(.data$rict_plan == .dist) |>
+      dplyr::filter(.data$rict_plan == .dist) |>
       ggplot2::ggplot() +
       ggplot2::geom_sf(
         data = dplyr::filter(comp_shp, .data$rict_plan == .dist),

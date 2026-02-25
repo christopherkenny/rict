@@ -7,7 +7,16 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides a suite of tools to create tables that accompany maps. The focus is clean, informative tables for electoral outcomes, compactness, and other district-level quantities. Most tools are aimed at the redistricting context, but are broadly applicable to other electoral data.
+Provides a suite of tools to create tables that accompany maps. The tools create clean, informative tables for electoral outcomes, compactness, and other district-level quantities. Most tools are aimed at the redistricting context, but are broadly applicable to other electoral data.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://christophertkenny.com/rict/}
+  \item \url{https://github.com/christopherkenny/rict}
+  \item Report bugs at \url{https://github.com/christopherkenny/rict/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Christopher T. Kenny \email{ctkenny@proton.me} (\href{https://orcid.org/0000-0002-9386-6860}{ORCID})

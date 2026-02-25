@@ -12,8 +12,8 @@
 #' @export
 #'
 #' @examples
-#' data(wv_plans)
 #' rict(wv)
+#' rict(wv_plans, 'cd_2020')
 rict <- function(x, plan, ...) {
   UseMethod('rict')
 }

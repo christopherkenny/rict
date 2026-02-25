@@ -8,6 +8,9 @@
 \describe{
 \item{\code{GEOID}}{US Census Geographic Identifier}
 \item{\code{NAME}}{County name}
+\item{\code{state}}{State name}
+\item{\code{county}}{County name}
+\item{\code{pop}}{Total population}
 \item{\code{pop_hisp}}{Hispanic population}
 \item{\code{pop_white}}{White, non-Hispanic population}
 \item{\code{pop_black}}{Black, non-Hispanic population}

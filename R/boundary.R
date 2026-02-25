@@ -28,6 +28,12 @@ rict_boundary <- function(map, plan, seam, columns, adj_col = 'adj', as_gt = TRU
     )
 
   shp <- geomander::seam_geom(adj = map[[adj_col]], admin = 'District', seam = seam, shp = map)
+
+  if (!missing(columns)) {
+    cols_quo <- rlang::enquo(columns)
+    shp <- shp |> dplyr::select(dplyr::all_of(c(adj_col, 'District')), !!cols_quo)
+  }
+
   shp <- shp |>
     dplyr::group_by(dplyr::across(dplyr::all_of(c(!!adj_col, 'District'))))
 
