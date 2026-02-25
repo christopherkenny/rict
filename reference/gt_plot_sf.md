@@ -12,7 +12,7 @@ gt_plot_sf(tab, name, height = 100, ...)
 
 - tab:
 
-  A `gt` table with class `gt_tbl`
+  A `gt` table with class `gt::gt_tbl`
 
 - name:
 

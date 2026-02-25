@@ -12,7 +12,7 @@ data_color_party(tab, columns = gt::everything(), ...)
 
 - tab:
 
-  A `gt` table with class `gt_tbl`
+  A `gt` table with class `gt::gt_tbl`
 
 - columns:
 

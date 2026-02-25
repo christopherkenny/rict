@@ -29,7 +29,7 @@ rict_component(map, plan, admin, as_gt = TRUE)
 
 ## Value
 
-a `gt_tbl` if `as_gt = TRUE`, otherwise a
+a `gt::gt_tbl` if `as_gt = TRUE`, otherwise a
 [tibble::tibble](https://tibble.tidyverse.org/reference/tibble.html)
 
 ## Examples

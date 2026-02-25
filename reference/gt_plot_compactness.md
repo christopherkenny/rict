@@ -19,7 +19,7 @@ gt_plot_compactness(
 
 - tab:
 
-  A `gt` table with class `gt_tbl`
+  A `gt` table with class `gt::gt_tbl`
 
 - shp:
 

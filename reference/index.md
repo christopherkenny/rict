@@ -5,11 +5,6 @@
 - [`data_color_party()`](http://christophertkenny.com/rict/reference/data_color_party.md)
   : Color Columns with Partisan Scales
 
-- [`gt_add_column()`](http://christophertkenny.com/rict/reference/gt_add_column.md)
-  :
-
-  Add a column to a `gt`
-
 - [`gt_get_data()`](http://christophertkenny.com/rict/reference/gt_get_data.md)
   :
 

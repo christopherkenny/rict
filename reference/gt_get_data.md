@@ -12,7 +12,7 @@ gt_get_data(tab)
 
 - tab:
 
-  A `gt` table with class `gt_tbl`
+  A `gt` table with class `gt::gt_tbl`
 
 ## Value
 
@@ -22,6 +22,20 @@ A [dplyr::tibble](https://dplyr.tidyverse.org/reference/reexports.html)
 
 ``` r
 rict(wv) |> gt_get_data()
+#> Warning: There was 1 warning in `dplyr::summarize()`.
+#> ℹ In argument: `dplyr::across(where(is.numeric), sum, na.rm = TRUE)`.
+#> ℹ In group 1: `district = 1`.
+#> Caused by warning:
+#> ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+#> Supply arguments directly to `.fns` through an anonymous function instead.
+#> 
+#>   # Previously
+#>   across(a:b, mean, na.rm = TRUE)
+#> 
+#>   # Now
+#>   across(a:b, \(x) mean(x, na.rm = TRUE))
+#> ℹ The deprecated feature was likely used in the redist package.
+#>   Please report the issue at <https://github.com/alarm-redist/redist/issues>.
 #> # A tibble: 2 × 40
 #>   district    pop pop_white pop_black pop_hisp pop_aian pop_asian pop_nhpi
 #>      <int>  <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>    <dbl>
