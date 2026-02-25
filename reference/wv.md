@@ -15,6 +15,18 @@ Virginia at the county level.
 
   County name
 
+- `state`:
+
+  State name
+
+- `county`:
+
+  County name
+
+- `pop`:
+
+  Total population
+
 - `pop_hisp`:
 
   Hispanic population
