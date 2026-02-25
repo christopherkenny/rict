@@ -7,7 +7,7 @@
 data_color_party(tab, columns = gt::everything(), ...)
 }
 \arguments{
-\item{tab}{A \code{gt} table with class \code{gt_tbl}}
+\item{tab}{A \code{gt} table with class \code{gt::gt_tbl}}
 
 \item{columns}{the columns to color with partisan colors}
 

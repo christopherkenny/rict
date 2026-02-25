@@ -29,15 +29,13 @@ gt_plot_sf <- function(tab, name, height = 100, ...) {
     })
   })
 
-  if (missing(name)) {
-    name <- 'geom'
-  }
+  name_str <- if (missing(name)) 'geom' else rlang::as_name(rlang::ensym(name))
 
   tab |>
     gt_hide_lists() |>
-    gt_add_column(.col = !!rlang::enquo(name), .val = NA) |>
+    gt::cols_add(!!rlang::sym(name_str) := NA) |>
     gt::text_transform(
-      locations = gt::cells_body(columns = !!rlang::enquo(name)),
+      locations = gt::cells_body(columns = name_str),
       fn = function(x) {
         lapply(p, gt::ggplot_image, height = gt::px(height))
       }

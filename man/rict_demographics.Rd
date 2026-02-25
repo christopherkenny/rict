@@ -16,7 +16,7 @@ rict_demographics(map, plan, normalize = TRUE, as_gt = TRUE)
 \item{as_gt}{Logical. Should output be a \code{gt} table? Default: \code{TRUE}.}
 }
 \value{
-a \code{gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble::tibble}
+a \code{gt::gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble::tibble}
 }
 \description{
 Display demographic data in a table

@@ -7,7 +7,7 @@
 gt_hide_lists(tab)
 }
 \arguments{
-\item{tab}{A \code{gt} table with class \code{gt_tbl}}
+\item{tab}{A \code{gt} table with class \code{gt::gt_tbl}}
 }
 \value{
 A \link[gt:gt]{gt::gt}

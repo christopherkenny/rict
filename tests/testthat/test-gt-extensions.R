@@ -15,10 +15,3 @@ test_that('gt_hide_lists returns gt_tbl', {
   result <- gt_hide_lists(tab)
   expect_s3_class(result, 'gt_tbl')
 })
-
-test_that('gt_add_column adds a column', {
-  tab <- rict(wv)
-  result <- gt_add_column(tab, new_col, 1)
-  data <- gt_get_data(result)
-  expect_true('new_col' %in% names(data))
-})

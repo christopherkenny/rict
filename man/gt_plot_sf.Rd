@@ -7,7 +7,7 @@
 gt_plot_sf(tab, name, height = 100, ...)
 }
 \arguments{
-\item{tab}{A \code{gt} table with class \code{gt_tbl}}
+\item{tab}{A \code{gt} table with class \code{gt::gt_tbl}}
 
 \item{name}{Name for \code{sf} column in \code{gt}}
 

@@ -7,7 +7,7 @@
 gt_get_data(tab)
 }
 \arguments{
-\item{tab}{A \code{gt} table with class \code{gt_tbl}}
+\item{tab}{A \code{gt} table with class \code{gt::gt_tbl}}
 }
 \value{
 A \link[dplyr:reexports]{dplyr::tibble}

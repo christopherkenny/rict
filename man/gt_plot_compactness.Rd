@@ -14,7 +14,7 @@ gt_plot_compactness(
 )
 }
 \arguments{
-\item{tab}{A \code{gt} table with class \code{gt_tbl}}
+\item{tab}{A \code{gt} table with class \code{gt::gt_tbl}}
 
 \item{shp}{An \code{sf} object}
 

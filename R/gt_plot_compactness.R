@@ -32,7 +32,7 @@ gt_plot_compactness <- function(tab, shp, plan, measures = guess_comp(tab),
     cp <- cps[[i]]
     nom <- noms[i]
     tab <- tab |>
-      gt_add_column(.col = !!nom, .val = NA) |>
+      gt::cols_add(!!rlang::sym(nom) := NA) |>
       gt::text_transform(
         locations = gt::cells_body(columns = !!rlang::enquo(nom)),
         fn = function(x) {

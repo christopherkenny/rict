@@ -19,7 +19,7 @@ instead of looking up \code{adj_col} in \code{map}.}
 \item{as_gt}{Logical. Should output be a \code{gt} table? Default: \code{TRUE}.}
 }
 \value{
-a \code{gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble::tibble}
+a \code{gt::gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble::tibble}
 }
 \description{
 Display contiguity info in a table
