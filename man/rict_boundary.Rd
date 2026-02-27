@@ -23,7 +23,9 @@ rict_boundary(map, plan, seam, columns, adj_col = "adj", as_gt = TRUE)
 a \code{gt::gt_tbl} if \code{as_gt = TRUE}, otherwise a \link[tibble:tibble]{tibble::tibble}
 }
 \description{
-Display boundary information in a table
+Identifies neighboring precincts along a district boundary and displays them
+as adjacent pairs, with one row per pair of neighboring precincts from
+different districts.
 }
 \examples{
 rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2), columns = pop)

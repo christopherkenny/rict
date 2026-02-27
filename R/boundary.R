@@ -1,5 +1,9 @@
 #' Display boundary information in a table
 #'
+#' Identifies neighboring precincts along a district boundary and displays them
+#' as adjacent pairs, with one row per pair of neighboring precincts from
+#' different districts.
+#'
 #' @param map `r template_var_map()`
 #' @param plan `r template_var_plan()`
 #' @param seam `r template_var_seam()`
@@ -28,19 +32,79 @@ rict_boundary <- function(map, plan, seam, columns, adj_col = 'adj', as_gt = TRU
     )
 
   shp <- geomander::seam_geom(adj = map[[adj_col]], admin = 'District', seam = seam, shp = map)
+  shp_df <- tibble::as_tibble(sf::st_drop_geometry(shp))
+  names(shp_df)[names(shp_df) == '.rn'] <- 'rn'
+  seam_rns <- shp_df[['rn']]
 
-  if (!missing(columns)) {
-    cols_quo <- rlang::enquo(columns)
-    shp <- shp |> dplyr::select(dplyr::all_of(c(adj_col, 'District')), !!cols_quo)
+  # Build pairs of adjacent precincts across the district boundary
+  pairs_list <- list()
+  for (i in seq_len(nrow(shp_df))) {
+    ri <- shp_df[i, ]
+    if (ri[['District']] != seam[1]) next
+    neighbors <- ri[[adj_col]][[1]] + 1L
+    for (nb_rn in neighbors) {
+      if (nb_rn %in% seam_rns) {
+        nb_row <- shp_df[shp_df[['rn']] == nb_rn, ]
+        if (nrow(nb_row) == 1 && nb_row[['District']] == seam[2]) {
+          pairs_list[[length(pairs_list) + 1]] <- data.frame(rn_a = ri[['rn']], rn_b = nb_rn)
+        }
+      }
+    }
   }
 
-  shp <- shp |>
-    dplyr::group_by(dplyr::across(dplyr::all_of(c(!!adj_col, 'District'))))
+  if (length(pairs_list) == 0) {
+    d1 <- seam[1]
+    d2 <- seam[2]
+    cli::cli_abort('No adjacent pairs found along the boundary between districts {d1} and {d2}.')
+  }
+
+  pairs <- do.call(rbind, pairs_list)
+
+  # Select relevant columns for each side
+  if (!missing(columns)) {
+    cols_quo <- rlang::enquo(columns)
+    side_data <- shp_df |> dplyr::select(dplyr::all_of(c('rn', 'District')), !!cols_quo)
+  } else {
+    side_data <- shp_df |> dplyr::select(dplyr::all_of(c('rn', 'District')))
+  }
+  col_names <- setdiff(names(side_data), c('rn', 'District'))
+
+  # Create suffixed versions for each side
+  side_a <- side_data
+  names(side_a) <- paste0(names(side_a), '_a')
+
+  side_b <- side_data
+  names(side_b) <- paste0(names(side_b), '_b')
+
+  # Join pairs with side data and arrange columns
+  result <- pairs |>
+    dplyr::left_join(side_a, by = c('rn_a' = 'rn_a')) |>
+    dplyr::left_join(side_b, by = c('rn_b' = 'rn_b')) |>
+    dplyr::select(
+      dplyr::all_of(c(
+        'District_a', 'rn_a',
+        paste0(col_names, '_a'),
+        paste0(col_names, '_b'),
+        'rn_b', 'District_b'
+      ))
+    )
 
   if (!as_gt) {
-    shp
+    tibble::as_tibble(result)
   } else {
-    shp |>
-      gt::gt()
+    # Build clean column labels
+    labels <- list()
+    labels[['District_a']] <- 'District'
+    labels[['rn_a']] <- 'Precinct'
+    for (cn in col_names) {
+      labels[[paste0(cn, '_a')]] <- cn
+      labels[[paste0(cn, '_b')]] <- cn
+    }
+    labels[['rn_b']] <- 'Precinct'
+    labels[['District_b']] <- 'District'
+
+    result |>
+      gt::gt() |>
+      gt::cols_label(.list = labels)
   }
 }

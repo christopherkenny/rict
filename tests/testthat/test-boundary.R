@@ -5,7 +5,12 @@ test_that('rict_boundary returns gt', {
 
 test_that('rict_boundary returns tibble when as_gt = FALSE', {
   result <- rict_boundary(map = wv, plan = wv$cd_2020, seam = c(1, 2), columns = pop, as_gt = FALSE)
-  expect_true('District' %in% names(result))
+  expect_true('District_a' %in% names(result))
+  expect_true('District_b' %in% names(result))
+  expect_true('rn_a' %in% names(result))
+  expect_true('rn_b' %in% names(result))
+  expect_true('pop_a' %in% names(result))
+  expect_true('pop_b' %in% names(result))
 })
 
 test_that('rict_boundary errors without seam', {
