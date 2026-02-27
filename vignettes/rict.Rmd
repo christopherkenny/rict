@@ -192,7 +192,6 @@ rict(wv_plans, "cd_2020") |>
 
 ### Other gt utilities
 
-- `gt_add_column()`: add a new column to a `gt` table
 - `gt_get_data()`: extract the underlying tibble from a `gt` table
 - `gt_hide_lists()`: hide list-columns (e.g., adjacency lists) from display
 
