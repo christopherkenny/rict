@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   rict: rict.html
-last_built: 2026-02-25T21:42Z
+last_built: 2026-02-27T13:53Z
 urls:
   reference: http://christophertkenny.com/rict/reference
   article: http://christophertkenny.com/rict/articles
