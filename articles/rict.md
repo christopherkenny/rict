@@ -321,7 +321,6 @@ rict(wv_plans, "cd_2020") |>
 
 ### Other gt utilities
 
-- `gt_add_column()`: add a new column to a `gt` table
 - [`gt_get_data()`](http://christophertkenny.com/rict/reference/gt_get_data.md):
   extract the underlying tibble from a `gt` table
 - [`gt_hide_lists()`](http://christophertkenny.com/rict/reference/gt_hide_lists.md):
