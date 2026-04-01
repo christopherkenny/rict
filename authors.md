@@ -5,6 +5,8 @@
 - **Christopher T. Kenny**. Author, maintainer.
   [](https://orcid.org/0000-0002-9386-6860)
 
+- **Cory McCartan**. Artist. [](https://orcid.org/0000-0002-6251-669X)
+
 ## Citation
 
 Source:
