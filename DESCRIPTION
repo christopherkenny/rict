@@ -10,8 +10,7 @@ Authors@R: c(
     person(given = "Cory",
            family = "McCartan",
            role = "art",
-           comment = c(ORCID = "0000-0002-6251-669X"))
-)
+           comment = c(ORCID = "0000-0002-6251-669X")))
 Description: Provides a suite of tools to create tables that accompany maps. The
     tools create clean, informative tables for electoral outcomes, compactness, and
     other district-level quantities. Most tools are aimed at the redistricting
