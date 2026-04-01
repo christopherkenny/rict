@@ -1,12 +1,17 @@
 Package: rict
 Title: Redistricting in Clean Tables
 Version: 0.0.1
-Authors@R: 
+Authors@R: c(
     person(given = "Christopher T.",
            family = "Kenny",
            role = c("aut", "cre"),
            email = "ctkenny@proton.me",
-           comment = c(ORCID = "0000-0002-9386-6860"))
+           comment = c(ORCID = "0000-0002-9386-6860")),
+    person(given = "Cory",
+           family = "McCartan",
+           role = "art",
+           comment = c(ORCID = "0000-0002-6251-669X"))
+)
 Description: Provides a suite of tools to create tables that accompany maps. The
     tools create clean, informative tables for electoral outcomes, compactness, and
     other district-level quantities. Most tools are aimed at the redistricting
