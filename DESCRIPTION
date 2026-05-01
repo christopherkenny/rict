@@ -42,6 +42,7 @@ Suggests:
     spelling,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Config/Needs/website: christopherkenny/ctktemplate
 VignetteBuilder: knitr
 URL: http://christophertkenny.com/rict/, https://github.com/christopherkenny/rict
 BugReports: https://github.com/christopherkenny/rict/issues
