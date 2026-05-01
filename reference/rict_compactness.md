@@ -48,31 +48,3 @@ rict_compactness(map = wv, plan = wv$cd_2020)
 
 District
 ```
-
-Polsby-Popper
-
-Schwartzberg
-
-Reock
-
-Convex Hull
-
-1
-
-35.0%
-
-59.2%
-
-46.8%
-
-79.6%
-
-2
-
-17.4%
-
-41.7%
-
-26.7%
-
-50.1%

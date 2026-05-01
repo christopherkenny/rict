@@ -8,18 +8,22 @@
 <title>Redistricting in Clean Tables • rict</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Fira_Sans-0.4.10/font.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Redistricting in Clean Tables">
 <meta name="description" content="Provides a suite of tools to create tables that accompany maps. The tools create clean, informative tables for electoral outcomes, compactness, and other district-level quantities. Most tools are aimed at the redistricting context, but are broadly applicable to other electoral data.">
 <meta property="og:description" content="Provides a suite of tools to create tables that accompany maps. The tools create clean, informative tables for electoral outcomes, compactness, and other district-level quantities. Most tools are aimed at the redistricting context, but are broadly applicable to other electoral data.">
 <meta property="og:image" content="http://christophertkenny.com/rict/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@Chris_T_Kenny">
+<meta name="twitter:site" content="@Chris_T_Kenny">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">rict</a>
 
@@ -71,37 +75,37 @@
 <col width="50%">
 <col width="50%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/rict.html">rict()</a></code></td>
 <td>District-level summary from a <code>redist_map</code> or <code>redist_plans</code>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/rict_demographics.html">rict_demographics()</a></code></td>
 <td>Population and voting-age population by race/ethnicity</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/rict_elections.html">rict_elections()</a></code></td>
 <td>Democratic vote shares across electoral contests</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/rict_compactness.html">rict_compactness()</a></code></td>
 <td>Common compactness scores (Polsby-Popper, Reock, etc.)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/rict_population.html">rict_population()</a></code></td>
 <td>Population and deviation from the ideal district size</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/rict_splits.html">rict_splits()</a></code></td>
 <td>Number of administrative units split by the plan</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/rict_contiguity.html">rict_contiguity()</a></code></td>
 <td>Number of contiguous pieces per district</td>
 </tr>
@@ -109,16 +113,16 @@
 </table>
 <p>Additional helpers embed visuals directly inside a <code>gt</code> table:</p>
 <table class="table">
-<thead><tr class="header">
+<thead><tr>
 <th>Function</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code><a href="reference/gt_plot_sf.html">gt_plot_sf()</a></code></td>
 <td>Embed district map thumbnails</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code><a href="reference/gt_plot_compactness.html">gt_plot_compactness()</a></code></td>
 <td>Embed compactness geometry plots</td>
 </tr>

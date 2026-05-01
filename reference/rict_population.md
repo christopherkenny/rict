@@ -38,27 +38,3 @@ rict_population(map = wv, plan = wv$cd_2020)
 
 District
 ```
-
-Population
-
-Deviation
-
-People
-
-%
-
-1
-
-896,067
-
-−791
-
-−0.1%
-
-2
-
-897,649
-
-791
-
-0.1%

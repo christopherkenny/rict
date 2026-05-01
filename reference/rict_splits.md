@@ -65,25 +65,3 @@ rict_splits(map = wv, plan = wv$cd_2020, admin = 'state')
 
 District
 ```
-
-admin_state
-
-total_state
-
-multi_state
-
-1
-
-1
-
-1
-
-0
-
-2
-
-1
-
-1
-
-0

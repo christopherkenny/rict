@@ -38,31 +38,3 @@ rict_elections(map = wv, plan = wv$cd_2020)
 
 District
 ```
-
-Average Dem. Vote Share
-
-Contests Dem. Vote Share
-
-Cycle Dem. Vote Share
-
-Pre-Average
-
-Pres 2020
-
-2020
-
-1
-
-29.2%
-
-29.2%
-
-29.2%
-
-2
-
-31.2%
-
-31.2%
-
-31.2%

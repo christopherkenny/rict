@@ -46,13 +46,3 @@ rict_contiguity(map = wv, plan = wv$cd_2020)
 
 District
 ```
-
-Pieces
-
-1
-
-1
-
-2
-
-1
